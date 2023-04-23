@@ -544,6 +544,8 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   add_definitions( -fPIC )
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+add_definitions( -DENABLE_BEZIER_GEOMETRY )
+
 set(${KRATOS_KERNEL} "")
 set(${KRATOS_PYTHON_INTERFACE} "")
 

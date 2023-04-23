@@ -929,6 +929,20 @@ public:
             *i = typename PointType::Pointer( new PointType( **i ) );
     }
 
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    // Initialize this geometry
+    virtual void Initialize(GeometryData::IntegrationMethod ThisMethod)
+    {}
+
+    // Initialize this geometry based on the integration points
+    virtual void Initialize(const GeometryType::IntegrationPointsArrayType& integration_points)
+    {}
+
+    // Clean the internal memory of this geometry
+    virtual void Clean()
+    {}
+    #endif
+
     ///@}
     ///@name Geometry Data and Geometry Shape Function Container
     ///@{
@@ -3390,6 +3404,9 @@ public:
     @see ShapeFunctionsLocalGradients
     @see ShapeFunctionLocalGradient
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     const Matrix& ShapeFunctionsValues() const
     {
         return mpGeometryData->ShapeFunctionsValues();
@@ -3435,6 +3452,9 @@ public:
     @see ShapeFunctionsLocalGradients
     @see ShapeFunctionLocalGradient
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     const Matrix& ShapeFunctionsValues( IntegrationMethod ThisMethod )  const
     {
         return mpGeometryData->ShapeFunctionsValues( ThisMethod );
@@ -3462,6 +3482,9 @@ public:
     @see ShapeFunctionsLocalGradients
     @see ShapeFunctionLocalGradient
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     double ShapeFunctionValue( IndexType IntegrationPointIndex, IndexType ShapeFunctionIndex ) const
     {
         return mpGeometryData->ShapeFunctionValue( IntegrationPointIndex, ShapeFunctionIndex );
@@ -3489,6 +3512,9 @@ public:
     @see ShapeFunctionsLocalGradients
     @see ShapeFunctionLocalGradient
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     double ShapeFunctionValue( IndexType IntegrationPointIndex, IndexType ShapeFunctionIndex, IntegrationMethod ThisMethod ) const
     {
         return mpGeometryData->ShapeFunctionValue( IntegrationPointIndex, ShapeFunctionIndex, ThisMethod );
@@ -3535,7 +3561,9 @@ public:
     @see ShapeFunctionValue
     @see ShapeFunctionLocalGradient
     */
-
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     const ShapeFunctionsGradientsType& ShapeFunctionsLocalGradients() const
     {
         return mpGeometryData->ShapeFunctionsLocalGradients();
@@ -3562,6 +3590,9 @@ public:
     @see ShapeFunctionValue
     @see ShapeFunctionLocalGradient
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     const ShapeFunctionsGradientsType& ShapeFunctionsLocalGradients( IntegrationMethod ThisMethod ) const
     {
         return mpGeometryData->ShapeFunctionsLocalGradients( ThisMethod );
@@ -3589,6 +3620,9 @@ public:
     @see ShapeFunctionValue
     @see ShapeFunctionsLocalGradients
     */
+    #ifdef ENABLE_BEZIER_GEOMETRY
+    virtual
+    #endif
     const Matrix& ShapeFunctionLocalGradient( IndexType IntegrationPointIndex )  const
     {
         return mpGeometryData->ShapeFunctionLocalGradient( IntegrationPointIndex );
